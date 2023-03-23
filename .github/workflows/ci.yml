@@ -29,7 +29,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Login to github docker registry
-        uses : docker/login-action@v1
+        uses : docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -39,7 +39,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io${{ github.actor }}/react-demo:latest
+          tags: ghcr.io/${{ github.actor }}/react-demo:latest
       # - name: Build docker image
       #   run: docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
         
