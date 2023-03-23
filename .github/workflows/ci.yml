@@ -1,0 +1,30 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses : actions/checkout@v3
+      - name: Use Node.js 16
+        uses : actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: nom install
+      - name: Tests
+        run: npm test
+        env:
+          CI: true
+      - name: Build
+        run: npm run build
+      - name: Login to github docker registery
+        uses : actions/login-action@v1
+        with:
+          registery: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKER_PUSH_TOKEN}}
+        
