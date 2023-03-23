@@ -1,6 +1,3 @@
-FROM nginx:1.23-alpine
-
-RUN apk update && \
-    apk add --vo-cache bash
+FROM nginx:1.13-alpine
 
 COPY ./src /usr/share/nginx/html

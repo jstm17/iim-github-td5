@@ -27,4 +27,11 @@ jobs:
           registery: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_PUSH_TOKEN}}
+      - name: Build and push image
+        uses: docker/build/push-action@v4
+        with:
+          push: true
+          tags: ${{ github.actor }}/react-demo:${{ github.sha }}
+      # - name: Build docker image
+      #   run: docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
         
