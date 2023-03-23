@@ -22,7 +22,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Login to github docker registery
-        uses : actions/login-action@v1
+        uses : docker/login-action@v1
         with:
           registery: ghcr.io
           username: ${{ github.actor }}
