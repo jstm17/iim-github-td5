@@ -18,6 +18,7 @@ jobs:
       - name: Cache node_modules
         uses: actions/cache@v2
         with:
+          path: ~/.npm
           key: ${{  runner.os }}-node-${{ hashFiles( '**/package-lock.json' ) }}
           restore-keys:
             ${{ runner.os }}-node
@@ -36,8 +37,9 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v4
         with:
+          context: .
           push: true
-          tags: ${{ github.actor }}/react-demo:latest
+          tags: ghcr.io${{ github.actor }}/react-demo:latest
       # - name: Build docker image
       #   run: docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
         
