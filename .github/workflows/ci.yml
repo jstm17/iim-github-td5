@@ -28,7 +28,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_PUSH_TOKEN}}
       - name: Build and push image
-        uses: docker/build/push-action@v4
+        uses: docker/build-push-action@v4
         with:
           push: true
           tags: ${{ github.actor }}/react-demo:${{ github.sha }}
