@@ -14,7 +14,9 @@ jobs:
         with:
           node-version: 16
       - name: Install dependencies
-        run: nom install
+        run: npm install
+      - name: Cache node_modules
+        uses: actions/cache@v2
       - name: Tests
         run: npm test
         env:
