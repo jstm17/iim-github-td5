@@ -15,8 +15,8 @@ jobs:
           node-version: 16
       - name: Install dependencies
         run: npm install
-      - name: Cache node_modules
-        uses: actions/cache@v2
+      # - name: Cache node_modules
+      #   uses: actions/cache@v2
       - name: Tests
         run: npm test
         env:
@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ${{ github.actor }}/react-demo:${{ github.sha }}
+          tags: ${{ github.actor }}/react-demo:latest
       # - name: Build docker image
       #   run: docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
         
